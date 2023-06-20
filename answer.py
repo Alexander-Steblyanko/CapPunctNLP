@@ -11,6 +11,7 @@ ans_model.eval()
 
 
 def answer(text):
+    corr_text = ""
     inbetween = pd.Series(index=['x', 'y_mask', 'y_pred'], dtype=object,
                           data = [[], [], []])
 
@@ -27,7 +28,6 @@ def answer(text):
              if x_mask[i] == 1]
 
         with torch.no_grad():
-            corr_text = ""
             # For each batch... (we ignore the generated y - it's bunk/empty)
             # Get predicted punctuation
             y_pred = ans_model(torch.tensor(x).view(1, -1),

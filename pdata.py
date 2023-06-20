@@ -126,9 +126,10 @@ def reinterpret_tokens(x, y, x_mask, y_mask):
     idx = 0
     sentence = ""
     word = ""
+
     while idx < len(x) and x_mask[idx]:
         #print(x[idx], y[idx])
-        if x[idx] not in spec_tokens.values():
+        if x[idx] not in spec_tokens.values() or x[idx] == spec_tokens['UNKNOWN']:
             word += tokenizer.decode(x[idx], clean_up_tokenization_spaces=True)
             if y_mask[idx]:
                 if y[idx] >= punc_dict['_Up']:

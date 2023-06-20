@@ -9,7 +9,7 @@ st.set_page_config(
     layout="centered",
 )
 
-st.title("Steblyanko - Service for text correction using neural network")
+st.title("Steblianko - Service for text correction using neural network")
 
 left, right = st.columns(2)
 
